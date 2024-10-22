@@ -1,0 +1,57 @@
+<div class="container mt-4">
+  <!-- Success Message -->
+  <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+  </div>
+  
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+  </div>
+
+  <!-- Navbar for Personal Documents -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary mb-4">
+      <span class="navbar-brand text-white">Personal Documents</span>
+      <button class="btn btn-success btn-sm ml-auto" (click)="approvePersonalDocument(applicationId)">Approve Personal Loan</button>
+  </nav>
+
+  <!-- Check if there are personal documents -->
+  <div *ngIf="personalDocuments.length > 0; else noDocuments">
+      <h2 class="mb-3">Documents for Application ID: <span class="text-primary">{{ applicationId }}</span></h2>
+
+      <!-- List group for personal documents -->
+      <ul class="list-group">
+          <li *ngFor="let document of personalDocuments" class="list-group-item d-flex justify-content-between align-items-center">
+              <p class="mb-1"><strong>{{ document.docsName }}</strong></p>
+              <a [href]="document.docsURL" target="_blank" class="btn btn-outline-primary btn-sm">View Document</a>
+          </li>
+      </ul>
+  </div>
+  <br><br>
+
+  <!-- Navbar for Collateral Documents -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary mb-4">
+      <span class="navbar-brand text-white">Collateral Documents</span>
+      <button class="btn btn-success btn-sm ml-auto" (click)="approveCollateralDocument(applicationId)">Approve Collateral Loan</button>
+  </nav>
+
+  <!-- Check if there are collateral documents -->
+  <div *ngIf="collateralDocuments.length > 0; else noDocuments">
+      <h2 class="mb-3">Documents for Application ID: <span class="text-primary">{{ applicationId }}</span></h2>
+
+      <!-- List group for collateral documents -->
+      <ul class="list-group">
+          <li *ngFor="let document of collateralDocuments" class="list-group-item d-flex justify-content-between align-items-center">
+              <p class="mb-1"><strong>{{ document.cdName }}</strong></p>
+              <a [href]="document.cdUrl" target="_blank" class="btn btn-outline-primary btn-sm">View Document</a>
+          </li>
+      </ul>
+  </div>
+
+  <!-- Template for no documents -->
+  <ng-template #noDocuments>
+      <div class="alert alert-warning mt-3" role="alert">
+          <strong>No documents uploaded for this application.</strong>
+      </div>
+  </ng-template>
+</div>

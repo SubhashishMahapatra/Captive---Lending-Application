@@ -1,0 +1,48 @@
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  }
+ 
+  .card {
+    transition: transform 0.3s ease-in-out;
+  }
+ 
+  .card:hover {
+    transform: translateY(-5px);
+  }
+ 
+  .form-range::-webkit-slider-thumb {
+    background: #007bff;
+  }
+ 
+  .form-range::-moz-range-thumb {
+    background: #007bff;
+  }
+ 
+  .form-range::-ms-thumb {
+    background: #007bff;
+  }
+ 
+  .display-4 {
+    font-weight: 600;
+  }
+ 
+  .btn-primary {
+    transition: all 0.3s ease;
+  }
+ 
+  .btn-primary:hover {
+    transform: scale(1.05);
+  }
+ 
+  /* New styles for the welcome image */
+.img-fluid {
+    max-height: 600px;
+    object-fit: cover;
+    width: 100%;
+  }
+ 
+  @media (max-width: 767px) {
+    .img-fluid {
+      max-height: 200px;
+    }
+  }

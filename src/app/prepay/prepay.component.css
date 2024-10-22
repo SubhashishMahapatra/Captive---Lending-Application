@@ -1,0 +1,23 @@
+/* prepay.component.css */
+
+.container {
+    max-width: 600px; /* Set a max width for better responsiveness */
+    margin: auto;
+}
+
+h2 {
+    text-align: center; /* Center the heading */
+    color: #0056b3; /* Change heading color */
+}
+
+.form-control {
+    margin-bottom: 1rem; /* Add spacing below input */
+}
+
+.btn {
+    width: 100%; /* Full width for buttons */
+}
+
+.alert {
+    text-align: center; /* Center align alerts */
+}

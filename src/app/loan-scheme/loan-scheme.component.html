@@ -1,0 +1,113 @@
+<div class="container loan-scheme-container">
+  <div class="row mb-3">
+  <div class="col-md-6">
+  <input
+          type="text"
+          class="form-control search-bar"
+          placeholder="Search Retail Loans"
+          [(ngModel)]="searchRetail"
+          (input)="filterLoans()"
+        />
+  </div>
+  <div class="col-md-6">
+  <input
+          type="text"
+          class="form-control search-bar"
+          placeholder="Search Corporate Loans"
+          [(ngModel)]="searchCorporate"
+          (input)="filterLoans()"
+        />
+  </div>
+  </div>
+   
+   
+  <div class="row">
+
+  <div class="col-md-6 loan-table">
+  <h2 class="my-4 text-center section-title">Retail Loan Schemes</h2>
+  <div class="table-responsive shadow">
+  <table class="table table-bordered table-striped table-hover">
+  <thead class="thead-dark">
+  <tr>
+  <th>Loan Name</th>
+  <th>Description</th>
+  <th>Rate of Interest (%)</th>
+  <th>Tenure (Months)</th>
+  <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let loan of paginatedRetailLoans" class="table-row">
+  <td>{{ loan.lsName }}</td>
+  <td>{{ loan.lsDescription }}</td>
+  <td>{{ loan.rateOfInterest }}%</td>
+  <td>{{ loan.tenure }} months</td>
+  <td>
+  <button class="btn btn-success btn-sm apply-btn" (click)="applyForLoan(loan.loanSchemesId)">
+                    Apply <i class="fas fa-arrow-right"></i>
+  </button>
+  </td>
+  </tr>
+  </tbody>
+  </table>
+
+
+  
+ 
+  <nav class="pagination-nav">
+  <ul class="pagination justify-content-center">
+  <li class="page-item" [class.disabled]="currentRetailPage === 1">
+  <a class="page-link" (click)="prevRetailPage()">Previous</a>
+  </li>
+  <li class="page-item" [class.disabled]="currentRetailPage === totalRetailPages">
+  <a class="page-link" (click)="nextRetailPage()">Next</a>
+  </li>
+  </ul>
+  </nav>
+  </div>
+  </div>
+   
+      
+  <div class="col-md-6 loan-table">
+  <h2 class="my-4 text-center section-title">Corporate Loan Schemes</h2>
+  <div class="table-responsive shadow">
+  <table class="table table-bordered table-striped table-hover">
+  <thead class="thead-dark">
+  <tr>
+  <th>Loan Name</th>
+  <th>Description</th>
+  <th>Rate of Interest (%)</th>
+  <th>Tenure (Months)</th>
+  <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let loan of paginatedCorporateLoans" class="table-row">
+  <td>{{ loan.lsName }}</td>
+  <td>{{ loan.lsDescription }}</td>
+  <td>{{ loan.rateOfInterest }}%</td>
+  <td>{{ loan.tenure }} months</td>
+  <td>
+  <button class="btn btn-success btn-sm apply-btn" (click)="applyForLoan(loan.loanSchemesId)">
+                    Apply <i class="fas fa-arrow-right"></i>
+  </button>
+  </td>
+  </tr>
+  </tbody>
+  </table>
+  
+ 
+  <nav class="pagination-nav">
+  <ul class="pagination justify-content-center">
+  <li class="page-item" [class.disabled]="currentCorporatePage === 1">
+  <a class="page-link" (click)="prevCorporatePage()">Previous</a>
+  </li>
+  <li class="page-item" [class.disabled]="currentCorporatePage === totalCorporatePages">
+  <a class="page-link" (click)="nextCorporatePage()">Next</a>
+  </li>
+  </ul>
+  </nav>
+  </div>
+  </div>
+  </div>
+  </div>

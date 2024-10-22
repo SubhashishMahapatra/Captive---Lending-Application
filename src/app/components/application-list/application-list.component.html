@@ -1,0 +1,90 @@
+<div class="container mt-4">
+  <h2 class="mb-4 text-center">Your Loan Applications</h2>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="applications.length === 0 && !errorMessage" class="alert alert-info">
+    No applications found.
+  </div>
+
+  <div *ngIf="applications.length > 0">
+    <!-- Search bar -->
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search applications by Id"
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="filterApplications()"
+      />
+    </div>
+
+    <!-- Table for Loan Applications -->
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th>Application ID</th>
+            <th>Loan Scheme ID</th>
+            <th>Loan Amount</th>
+            <th>Account Number</th>
+            <th>Status</th>
+            <th>Application Date</th>
+            <th>Remark</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let app of getPaginatedApplications()">
+            <td>{{ app.loanApplicationId }}</td>
+            <td>{{ app.loanSchemesId }}</td>
+            <td>{{ app.amount | currency }}</td>
+            <td>{{ app.accountNumber }}</td>
+            <td>
+              <span
+                [ngClass]="{
+                  'badge bg-success': app.status === 'approved',
+                  'badge bg-danger': app.status === 'rejected',
+                  'badge bg-warning': app.status === 'pending'
+                }"
+                >{{ app.status }}</span
+              >
+            </td>
+            <td>{{ app.applicationDate | date: 'short' }}</td>
+            <td>{{ app.remark || 'N/A' }}</td>
+            <td>
+              <button
+                class="btn btn-primary me-2"
+                [disabled]="app.status !== 'approved'"
+                (click)="onPayEMI(app.loanApplicationId)"
+              >
+                Pay EMI
+              </button>
+              <button
+                class="btn btn-secondary"
+                [disabled]="app.status !== 'approved'"
+                (click)="onPrePay(app.loanApplicationId)"
+              >
+                PrePay
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination controls -->
+    <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-center">
+        <li class="page-item" [class.disabled]="currentPage === 1">
+          <button class="page-link" (click)="prevPage()">Previous</button>
+        </li>
+        <li class="page-item" [class.disabled]="currentPage === totalPages">
+          <button class="page-link" (click)="nextPage()">Next</button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

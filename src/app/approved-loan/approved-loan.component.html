@@ -1,0 +1,46 @@
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Approved Loans</h2>
+  
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="alert alert-danger text-center">
+      {{ errorMessage }}
+    </div>
+  
+    <!-- List of Approved Loans -->
+    <div *ngIf="approvedLoans.length > 0" class="row">
+      <div class="col-md-6 mb-4" *ngFor="let loan of approvedLoans">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <!-- Loan ID -->
+            <h5 class="card-title">Loan Application ID: {{ loan.loanApplicationId }}</h5>
+  
+            <!-- Loan Details -->
+            <p class="card-text">
+              <strong>Amount:</strong> {{ loan.amount | currency:'USD' }}
+            </p>
+            <p class="card-text">
+              <strong>Account Number:</strong> {{ loan.accountNumber }}
+            </p>
+            <p class="card-text">
+              <strong>Status:</strong> 
+              <span class="badge bg-success">{{ loan.status }}</span>
+            </p>
+            <p class="card-text">
+              <strong>Application Date:</strong> {{ loan.applicationDate | date:'medium' }}
+            </p>
+            
+            <!-- Remark -->
+            <p *ngIf="loan.remark">
+              <strong>Remark:</strong> {{ loan.remark }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- No Approved Loans Message -->
+    <div *ngIf="approvedLoans.length === 0 && !errorMessage" class="alert alert-info text-center">
+      No approved loans found.
+    </div>
+  </div>
+  

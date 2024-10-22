@@ -1,0 +1,53 @@
+<div class="container mt-4">
+  <h2>Make Payment</h2>
+
+  <!-- Error message -->
+  <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Success message -->
+  <div *ngIf="successMessage" class="alert alert-success" role="alert">
+    {{ successMessage }}
+  </div>
+
+  <!-- Payment Form -->
+  <form (ngSubmit)="submitPayment()">
+    <div class="mb-3">
+      <label for="paymentAmount" class="form-label">Payment Amount</label>
+      <input 
+        type="number" 
+        class="form-control" 
+        id="paymentAmount" 
+        [(ngModel)]="paymentAmount" 
+        name="paymentAmount" 
+        required 
+        min="1" 
+        placeholder="Enter amount"
+        aria-describedby="paymentHelp"
+      >
+      <small id="paymentHelp" class="form-text text-muted">Enter a valid payment amount.</small>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="transactionInProgress">
+      Submit Payment
+    </button>
+  </form>
+
+  <!-- Track Payments button (visible only after successful payment) -->
+  <button 
+    *ngIf="successMessage" 
+    class="btn btn-secondary mt-3" 
+    (click)="trackPayments()"
+  >
+    Track Payments
+  </button>
+
+  <!-- PayPal Button Container -->
+  <div id="paypal-button-container" class="mt-3"></div>
+
+  <!-- Transaction in Progress Notification -->
+  <div *ngIf="transactionInProgress" class="alert alert-info mt-3" role="alert">
+    Transaction in progress. Please do not refresh the page.
+  </div>
+</div>

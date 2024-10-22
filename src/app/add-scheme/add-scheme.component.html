@@ -1,0 +1,113 @@
+<div class="container my-5">
+  <h2 class="text-center mb-4">Add Loan Scheme</h2>
+  <form (ngSubmit)="onSubmit(loanSchemeForm)" #loanSchemeForm="ngForm" class="p-4 border rounded shadow-sm bg-light">
+
+    <div class="mb-3">
+      <label for="LSType" class="form-label">Loan Type</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-cash-stack"></i></span>
+        <select id="LSType" class="form-select" [(ngModel)]="loanScheme.LSType" name="LSType" required>
+          <option value="" disabled>Select Type</option>
+          <option value="retail">Retail</option>
+          <option value="corporate">Corporate</option>
+        </select>
+      </div>
+      <div *ngIf="loanSchemeForm.submitted && !loanScheme.LSType" class="text-danger">
+        Loan Type is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="LSName" class="form-label">Scheme Name</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-card-text"></i></span>
+        <input 
+          type="text" 
+          class="form-control" 
+          id="LSName" 
+          [(ngModel)]="loanScheme.LSName" 
+          name="LSName" 
+          required 
+          minlength="3" 
+          maxlength="100">
+      </div>
+      <div *ngIf="loanSchemeForm.submitted && !loanScheme.LSName" class="text-danger">
+        Scheme Name is required.
+      </div>
+      <div *ngIf="loanSchemeForm.submitted && (loanScheme.LSName && loanScheme.LSName.length < 3)" class="text-danger">
+        Scheme Name must be at least 3 characters long.
+      </div>
+      <div *ngIf="loanSchemeForm.submitted && (loanScheme.LSName && loanScheme.LSName.length > 100)" class="text-danger">
+        Scheme Name cannot exceed 100 characters.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="LSDescription" class="form-label">Description</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-pencil-square"></i></span>
+        <textarea 
+          class="form-control" 
+          id="LSDescription" 
+          [(ngModel)]="loanScheme.LSDescription" 
+          name="LSDescription" 
+          required 
+          minlength="10" 
+          maxlength="500"></textarea>
+      </div>
+      <div *ngIf="loanSchemeForm.submitted && !loanScheme.LSDescription" class="text-danger">
+        Description is required.
+      </div>
+      <div *ngIf="loanSchemeForm.submitted && (loanScheme.LSDescription && loanScheme.LSDescription.length < 10)" class="text-danger">
+        Description must be at least 10 characters long.
+      </div>
+      <div *ngIf="loanSchemeForm.submitted && (loanScheme.LSDescription && loanScheme.LSDescription.length > 500)" class="text-danger">
+        Description cannot exceed 500 characters.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="RateOfInterest" class="form-label">Rate of Interest (%)</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-percent"></i></span>
+        <input 
+          type="number" 
+          class="form-control" 
+          id="RateOfInterest" 
+          [(ngModel)]="loanScheme.RateOfInterest" 
+          name="RateOfInterest" 
+          required 
+          min="0" 
+          max="100" 
+          step="0.01">
+      </div>
+      <div *ngIf="loanSchemeForm.submitted && (loanScheme.RateOfInterest === null || loanScheme.RateOfInterest < 0 || loanScheme.RateOfInterest > 100)" class="text-danger">
+        Rate of Interest must be between 0 and 100.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="Tenure" class="form-label">Tenure (in months)</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+        <input 
+          type="number" 
+          class="form-control" 
+          id="Tenure" 
+          [(ngModel)]="loanScheme.Tenure" 
+          name="Tenure" 
+          required 
+          min="1" 
+          max="360">
+      </div>
+      <div *ngIf="loanSchemeForm.submitted && (loanScheme.Tenure === null || loanScheme.Tenure < 1 || loanScheme.Tenure > 360)" class="text-danger">
+        Tenure must be between 1 and 360 months.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-dark" [disabled]="loanSchemeForm.invalid">Add Scheme</button>
+
+    <!-- Cancel Button -->
+    <button type="button" class="btn btn-secondary ms-2" (click)="cancel()">Cancel</button>
+  </form>
+</div>

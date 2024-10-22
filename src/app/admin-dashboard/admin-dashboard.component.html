@@ -1,0 +1,116 @@
+<div class="container-fluid p-0">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Welcome {{ adminName }}</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link active" routerLink="/admin-dashboard">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/add-loan-officer">Add Loan Officer</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/add-scheme">Add Scheme</a>
+              </li>
+            </ul>
+            <!-- Logout Button -->
+            <button (click)="logout()" class="btn btn-outline-light">
+              <i class="bi bi-box-arrow-right"></i> Logout
+            </button>
+          </div>
+        </div>
+      </nav>
+
+    <!-- <h1 class="text-center mb-4">Admin Dashboard</h1> -->
+   <p></p>
+    <div class="row g-4">
+        <!-- Card 1: Add Loan Officer -->
+        <div class="col-md-6">
+          <div class="card text-start shadow-lg bg-white p-4 d-flex align-items-start h-100 border-0 rounded">
+            <h5 class="card-title mt-4 font-weight-bold">Add Loan Officer</h5>
+            <p class="card-text text-muted">Quickly add a new loan officer to manage applications.</p>
+            <div class="d-flex justify-content-between w-100">
+              <a routerLink="/add-loan-officer" class="btn btn-dark">
+                <i class="bi bi-person-fill-add"></i> Add Loan Officer
+              </a>
+            </div>
+          </div>
+        </div>
+   
+        <!-- Card 2: Add Scheme -->
+        <div class="col-md-6">
+          <div class="card text-start shadow-lg bg-white p-4 d-flex align-items-start h-100 border-0 rounded">
+            <h5 class="card-title mt-4 font-weight-bold">Add Scheme</h5>
+            <p class="card-text text-muted">Quickly add a new loan Scheme.</p>
+            <div class="d-flex justify-content-between w-100">
+              <a routerLink="/add-scheme" class="btn btn-dark">
+                <i class="bi bi-file-earmark-text-fill"></i> Add Scheme
+              </a>
+            </div>
+          </div>
+        </div>
+   
+        <!-- Spacer to stop the overlapping -->
+      <h1></h1>
+ 
+      <!-- Chart Card -->
+      <div class="col-md-6">
+        <div class="card text-start shadow-lg bg-white p-4 d-flex align-items-start h-100 border-0 rounded">
+          <h5 class="card-title mt-4 font-weight-bold">Loan Scheme Distribution</h5>
+          <div class="chart-wrapper">
+            <canvas
+              id="barCanvas"
+              style="max-width: 400px; max-height: 300px;"
+            ></canvas>
+          </div>
+        </div>
+      </div>
+ 
+     <!-- Cards for Loan Officers and Schemes -->
+<div class="col-md-6">
+    <div class="row g-4">
+      <!-- Loan Officers Card -->
+      <div class="col-md-4">
+        <div class="card text-start shadow-lg bg-white p-4 d-flex align-items-start h-100 border-0 rounded">
+          <h5 class="card-title mt-4 font-weight-bold">View Loan Officers</h5>
+          <p class="card-text text-muted">Check the list of loan officers.</p>
+          <div class="d-flex justify-content-center w-100">
+            <a routerLink="/loan-officers-table" class="btn btn-dark w-100">
+              <i class="bi bi-person-lines-fill"></i> View Officers
+            </a>
+          </div>
+        </div>
+      </div>
+ 
+  <!-- Loan Schemes Card -->
+<div class="col-md-4">
+  <div class="card text-start shadow-lg bg-white p-4 d-flex align-items-start h-100 border-0 rounded">
+    <h5 class="card-title mt-4 font-weight-bold">View Loan Schemes</h5>
+    <p class="card-text text-muted">Check list of retail and corporate loan schemes.</p>
+    <div class="d-flex justify-content-center w-100">
+      <a routerLink="/loan-schemes-table" class="btn btn-dark w-100">
+        <i class="bi bi-file-earmark-text-fill"></i>Loan Schemes
+      </a>
+    </div>
+  </div>
+</div>
+
+ <!-- Reports Card -->
+ <div class="col-md-4 d-flex">
+  <div class="card text-start shadow-lg bg-white p-4 d-flex align-items-start h-100 w-100 border-0 rounded">
+    <h5 class="card-title mt-4 font-weight-bold">View Reports</h5>
+    <p class="card-text text-muted">Check the Reports Here.</p>
+    <div class="d-flex justify-content-center w-100 mt-auto">
+      <a routerLink="/loan-distribution-chart" class="btn btn-dark w-100">
+        <i class="bi bi-bar-chart-line-fill"></i> View Reports
+      </a>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+    

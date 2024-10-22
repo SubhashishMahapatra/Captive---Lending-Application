@@ -1,0 +1,39 @@
+<!-- Navbar and Cards (unchanged) -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <button class="btn btn-light" (click)="goBack()"><i class="bi bi-skip-backward-btn-fill"></i>Back</button>
+    <a class="navbar-brand ms-3" href="#">Go Back to Admin Panel</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav"></div>
+  </div>
+</nav>
+
+<div class="row g-4">
+  <div class="col-md-4">
+    <div class="card text-start shadow-lg bg-white p-3 d-flex align-items-start h-100 border-0 rounded">
+      <h5 class="card-title mt-3 font-weight-bold">Loan Applications Breakdown</h5>
+      <canvas id="loanApplicationsChart"></canvas>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card text-start shadow-lg bg-white p-2 d-flex align-items-start h-100 border-0 rounded">
+      <h5 class="card-title mt-3 font-weight-bold">Status of Loan Applications</h5>
+      <canvas id="loanStatusChart"></canvas>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card text-start shadow-lg bg-white p-3 d-flex align-items-start h-100 border-0 rounded">
+      <h5 class="card-title mt-3 font-weight-bold">Loan Officers Breakdown</h5>
+      <canvas id="loanOfficersChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Add a Button for Downloading the Excel Report -->
+<div class="mt-4 text-center">
+  <button class="btn btn-primary" (click)="downloadExcel()">Download Excel Report</button>
+</div>

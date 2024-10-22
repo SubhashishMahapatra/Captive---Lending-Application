@@ -1,0 +1,81 @@
+/* Container Styling */
+.loan-scheme-container {
+    padding: 20px;
+    background-color: #f7f9fc;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  }
+   
+  /* Section Title Styling */
+  .section-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #050505;
+  }
+   
+  /* Table Styles */
+  .table {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    transition: transform 0.3s ease;
+  }
+   
+  .table-row:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+   
+  .table thead th {
+    background-color: #2a2b2c;
+    color: white;
+  }
+   
+  /* Apply Button */
+  .apply-btn {
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+   
+  .apply-btn:hover {
+    background-color: #3a78c2;
+  }
+   
+  /* Search Bar Styling */
+  .search-bar {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+  }
+   
+  .search-bar:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+  }
+   
+  /* Pagination Styling */
+  .pagination-nav .pagination {
+    margin: 0;
+  }
+   
+  .pagination .page-link {
+    color: #4a90e2;
+  }
+   
+  .pagination .page-item.active .page-link {
+    background-color: #4a90e2;
+    border-color: #4a90e2;
+  }
+   
+  .pagination .page-link:hover {
+    color: #ffffff;
+    background-color: #3a78c2;
+  }
+   
+  /* Table shadow for a more modern look */
+  .shadow {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }

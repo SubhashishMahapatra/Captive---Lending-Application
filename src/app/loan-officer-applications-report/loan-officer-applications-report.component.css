@@ -1,0 +1,27 @@
+.chart-container {
+    position: relative;
+    height: 50vh; /* Adjust height as needed */
+    width: 50vw;  /* Adjust width as needed */
+    margin: 90px auto 0 auto; /* Adds 20px margin from the top and centers the chart */
+    background-color: #f9f9f9; /* Light background color */
+    padding: 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow effect */
+    border-radius: 12px; /* Rounded corners */
+    border: 2px solid #e0e0e0; /* Light border */
+}
+ 
+canvas {
+    display: block;
+    max-height: 100%; /* Ensure chart resizes properly */
+}
+.center-content {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    text-align: center; /* Center text within the element */
+}
+ 
+h1 {
+    font-size: 2.5rem; /* Adjust font size as needed */
+    color: #333; /* Adjust color as needed */
+}

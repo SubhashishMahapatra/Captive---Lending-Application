@@ -1,0 +1,75 @@
+/* Custom Styling */
+.table thead th {
+    text-align: center;
+    font-weight: bold;
+    background-color: #f8f9fa;
+}
+
+.table tbody td {
+    vertical-align: middle;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1; /* A subtle hover effect for rows */
+}
+
+.table-responsive {
+    margin-bottom: 20px; /* Space under the table for better readability */
+}
+
+.table th, .table td {
+    padding: 12px 15px;
+    text-align: center;
+}
+
+/* Button Styling */
+.btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: white;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+    border-color: #d39e00;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+.card {
+    transition: transform 0.3s ease-in-out;
+  }
+ 
+  .card:hover {
+    transform: translateY(-5px);
+  }
+ 
+  .table {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+ 
+  .btn {
+    transition: all 0.3s ease;
+  }
+ 
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+ 
+  .chart-wrapper {
+    background-color: #f8f9fa; /* Light gray background */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Padding around the canvas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    display: flex; /* Center the canvas within the wrapper */
+    justify-content: center; /* Center align */
+  }

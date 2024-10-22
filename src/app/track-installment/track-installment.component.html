@@ -1,0 +1,43 @@
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Payment Logs</h2>
+  
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  
+    <div *ngIf="paymentLogs.length === 0 && !errorMessage" class="alert alert-info">
+      No payment logs found.
+    </div>
+  
+    <div *ngIf="paymentLogs.length > 0" class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <!-- <th>Payment Log ID</th> -->
+            <th>Installment No</th>
+            <th>Date of Payment</th>
+            <th>Due Date</th>
+            <th>EMI Amount</th>
+            <th>Principal Paid</th>
+            <th>Interest Paid</th>
+            <th>Total Principal Remaining</th>
+            <!-- <th>Repayment ID</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let log of paymentLogs">
+            <!-- <td>{{ log.paymentLogId }}</td> -->
+            <td>{{ log.installmentNo }}</td>
+            <td>{{ log.dateOfPayment | date: 'short' }}</td>
+            <td>{{ log.dueDate | date: 'short' }}</td>
+            <td>{{ log.emiAmount | currency }}</td>
+            <td>{{ log.principalPaid | number: '1.2-2' }}</td>
+            <td>{{ log.interestPaid | number: '1.2-2' }}</td>
+            <td>{{ log.totalPrincipalRemaining | number: '1.2-2' }}</td>
+            <!-- <td>{{ log.repaymentId }}</td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

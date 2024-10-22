@@ -1,0 +1,23 @@
+<div class="container mt-5">
+    <h2>Loan Officer Profile</h2>
+    <form *ngIf="loanOfficer">
+      <div class="mb-3">
+        <label for="loName" class="form-label">Name</label>
+        <input type="text" class="form-control" id="loName" [(ngModel)]="loanOfficer.loName" name="loName">
+      </div>
+      <div class="mb-3">
+        <label for="loEmail" class="form-label">Email</label>
+        <input type="email" class="form-control" id="loEmail" [(ngModel)]="loanOfficer.loEmail" name="loEmail">
+      </div>
+      <div class="mb-3">
+        <label for="loUserName" class="form-label">Username</label>
+        <input type="text" class="form-control" id="loUserName" [(ngModel)]="loanOfficer.loUserName" name="loUserName">
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" [(ngModel)]="loanOfficer.password" name="password">
+      </div>
+      <button type="button" class="btn btn-primary" (click)="updateLoanOfficerDetails()" routerLink="/loan-officer-dashboard">Save Changes</button>
+    </form>
+  </div>
+  

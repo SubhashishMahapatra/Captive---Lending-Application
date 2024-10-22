@@ -1,0 +1,68 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">Apro-Captive Lending Management System</a>
+      <div class="ml-auto">
+        <a routerLink="/login" class="btn btn-outline-dark me-2">Login</a>
+        <a routerLink="/register" class="btn btn-dark">Register</a>
+      </div>
+    </div>
+  </nav>
+ 
+  <div class="container my-5">
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <img src="https://img.freepik.com/free-vector/business-teamwork-with-coin_24877-54765.jpg?t=st=1727980321~exp=1727983921~hmac=8b20e65fdad4aa19e8440fe562d1682ce59fd4cd6b4361a99c42c0d392fc9c12&w=740" alt="Welcome to our bank" class="img-fluid rounded shadow-sm">
+        </div>
+       
+       
+      <div class="col-md-6">
+        <div class="card mb-4 shadow-sm">
+          <div class="card-body p-4">
+            <h2 class="card-title h5 mb-3">Personal Loan EMI Calculator</h2>
+            <p class="card-text mb-4">Calculate your Equated Monthly Installment (EMI) for personal loans.</p>
+ 
+            <div class="mb-4">
+              <label class="form-label">Loan Amount: ₹{{loanAmount | number}}</label>
+              <input type="range" class="form-range" [(ngModel)]="loanAmount" (ngModelChange)="onSliderChange()"
+                     min="50000" max="4000000" step="10000">
+            </div>
+ 
+            <div class="mb-4">
+              <label class="form-label">Interest Rate: {{interestRate}}%</label>
+              <input type="range" class="form-range" [(ngModel)]="interestRate" (ngModelChange)="onSliderChange()"
+                     min="5" max="22" step="0.1">
+            </div>
+ 
+            <div class="mb-4">
+              <label class="form-label">Loan Tenure: {{loanTenure}} months</label>
+              <input type="range" class="form-range" [(ngModel)]="loanTenure" (ngModelChange)="onSliderChange()"
+                     min="12" max="84" step="1">
+            </div>
+ 
+            <div class="bg-light p-4 rounded text-center">
+              <h3 class="h6 mb-3">Your Monthly EMI</h3>
+              <p class="display-4 text-success mb-3">₹{{monthlyPayment | number:'1.2-2'}}</p>
+              <button class="btn btn-dark" routerLink="/login">Apply Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+    <section class="my-5">
+      <h2 class="text-center mb-4">Featured Loan Offers</h2>
+      <div class="row">
+        <div *ngFor="let offer of loanOffers" class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="card-title h5">{{offer.title}}</h3>
+              <p class="card-text">{{offer.description}}</p>
+              <p class="card-text"><strong>Interest Rate: {{offer.interestRate}}</strong></p>
+              <!-- <button class="btn btn-outline-primary w-100">Learn More</button> -->
+              <a href="https://www.icicibank.com/blogs/personal-loan" class="btn btn-outline-primary w-100">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>  
+  </div>

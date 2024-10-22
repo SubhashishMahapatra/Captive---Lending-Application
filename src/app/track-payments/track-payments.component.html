@@ -1,0 +1,44 @@
+<div class="container mt-4">
+  <h2 class="mb-4 text-center">Approved Applications</h2>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="approvedApplications.length === 0 && !errorMessage" class="alert alert-info">
+    No approved applications found.
+  </div>
+
+  <div *ngIf="approvedApplications.length > 0" class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>Application ID</th>
+          <th>Loan Scheme ID</th>
+          <th>Loan Amount</th>
+          <th>Account Number</th>
+          <th>Application Date</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let app of approvedApplications">
+          <td>{{ app.loanApplicationId }}</td>
+          <td>{{ app.loanSchemesId }}</td>
+          <td>{{ app.amount | currency }}</td>
+          <td>{{ app.accountNumber }}</td>
+          <td>{{ app.applicationDate | date: 'short' }}</td>
+          <td>
+            <span class="badge bg-success">{{ app.status }}</span>
+          </td>
+          <td>
+            <button class="btn btn-primary" (click)="onViewPaymentDetails(app.loanApplicationId)">
+              View Payment Details
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

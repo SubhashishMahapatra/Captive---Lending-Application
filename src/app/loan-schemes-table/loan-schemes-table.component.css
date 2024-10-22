@@ -1,0 +1,16 @@
+/* Custom class for rounded edges on tables */
+.rounded-table {
+    border-radius: 10px; /* Makes the corners rounded */
+    overflow: hidden;    /* Ensures the rounded edges work for table borders */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Adds a soft shadow */
+}
+
+/* Optional: Add some padding to the table and cells for better visual spacing */
+.table-sm td, .table-sm th {
+    padding: 8px 10px; /* Adjust padding for smaller tables */
+}
+
+/* Optional: Add a subtle hover effect to the table rows */
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1; /* Light gray background on hover */
+}

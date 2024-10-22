@@ -1,0 +1,40 @@
+<div class="container my-5">
+  <h2 class="text-center mb-4">Edit Loan Scheme</h2>
+  <form (ngSubmit)="onSubmit()" class="p-4 border rounded shadow-sm bg-light">
+    <!-- <form (ngSubmit)="onSubmit()"> -->
+    <div class="mb-3">
+      <label for="LSName" class="form-label">Scheme Name</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-card-text"></i></span>
+        <input id="lsName" name="lsName" [(ngModel)]="loanScheme.lsName" class="form-control" type="text" required />
+      </div>
+    </div>
+ 
+    <div class="mb-3">
+      <label for="LSDescription" class="form-label">Description</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-pencil-square"></i></span>
+        <textarea id="lsDescription" name="lsDescription" [(ngModel)]="loanScheme.lsDescription" class="form-control" required placeholder="Enter loan scheme description" rows="3"></textarea>
+      </div>
+    </div>
+ 
+    <div class="mb-3">
+      <label for="RateOfInterest" class="form-label">Rate of Interest (%)</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-percent"></i></span>
+        <input id="lsName" name="rateOfInterest" [(ngModel)]="loanScheme.rateOfInterest" class="form-control" type="text" required />
+      </div>
+    </div>
+ 
+    <div class="mb-3">
+      <label for="Tenure" class="form-label">Tenure (in months)</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+        <input id="tenure" name="tenure" [(ngModel)]="loanScheme.tenure" class="form-control" type="number" required placeholder="Enter tenure in months" />
+      </div>
+    </div>
+ 
+    <button class="btn btn-dark w-100" type="submit">Save Changes</button>
+ 
+  </form>
+</div>

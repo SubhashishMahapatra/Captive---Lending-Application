@@ -1,0 +1,129 @@
+<div class="container my-4">
+  <h2 class="text-center mb-4">Add Loan Officer</h2>
+  <form (ngSubmit)="onSubmit(loanOfficerForm)" #loanOfficerForm="ngForm" class="p-4 border rounded shadow-sm bg-light">
+     
+      <div class="mb-3">
+          <label for="LOName" class="form-label">Name</label>
+          <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-card-text"></i></span>
+              <input 
+                  type="text" 
+                  class="form-control" 
+                  id="LOName" 
+                  [(ngModel)]="loanOfficer.LOName" 
+                  name="LOName" 
+                  required 
+                  minlength="3" 
+                  maxlength="50"
+                  pattern="^[a-zA-Z\s]+$"
+                  #LOName="ngModel"
+              >
+          </div>
+          <div *ngIf="LOName.invalid && (LOName.dirty || LOName.touched)" class="text-danger">
+              <div *ngIf="LOName.errors?.['required']">
+                  Name is required.
+              </div>
+              <div *ngIf="LOName.errors?.['minlength']">
+                  Name must be at least 3 characters long.
+              </div>
+              <div *ngIf="LOName.errors?.['maxlength']">
+                  Name cannot be longer than 50 characters.
+              </div>
+              <div *ngIf="LOName.errors?.['pattern']">
+                  Name should contain only letters and spaces.
+              </div>
+          </div>
+      </div>
+
+      <div class="mb-3">
+          <label for="LOEmail" class="form-label">Email</label>
+          <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+              <input 
+                  type="email"
+                  class="form-control" 
+                  id="LOEmail" 
+                  [(ngModel)]="loanOfficer.LOEmail" 
+                  name="LOEmail" 
+                  required
+                  #LOEmail="ngModel"
+              >
+          </div>
+          <div *ngIf="LOEmail.invalid && (LOEmail.dirty || LOEmail.touched)" class="text-danger">
+              <div *ngIf="LOEmail.errors?.['required']">
+                  Email is required.
+              </div>
+              <div *ngIf="LOEmail.errors?.['email']">
+                  Please enter a valid email address.
+              </div>
+          </div>
+      </div>
+
+      <div class="mb-3">
+          <label for="LOUserName" class="form-label">Username</label>
+          <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-person-circle"></i></span>
+              <input 
+                  type="text" 
+                  class="form-control" 
+                  id="LOUserName" 
+                  [(ngModel)]="loanOfficer.LOUserName" 
+                  name="LOUserName" 
+                  required 
+                  minlength="3" 
+                  maxlength="20" 
+                  pattern="^[a-zA-Z0-9_]+$"
+                  #LOUserName="ngModel"
+              >
+          </div>
+          <div *ngIf="LOUserName.invalid && (LOUserName.dirty || LOUserName.touched)" class="text-danger">
+              <div *ngIf="LOUserName.errors?.['required']">
+                  Username is required.
+              </div>
+              <div *ngIf="LOUserName.errors?.['minlength']">
+                  Username must be at least 3 characters long.
+              </div>
+              <div *ngIf="LOUserName.errors?.['maxlength']">
+                  Username cannot be longer than 20 characters.
+              </div>
+              <div *ngIf="LOUserName.errors?.['pattern']">
+                  Username can only contain alphanumeric characters and underscores.
+              </div>
+          </div>
+      </div>
+
+      <div class="mb-3">
+          <label for="Password" class="form-label">Password</label>
+          <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-lock"></i></span>
+              <input 
+                  type="password" 
+                  class="form-control" 
+                  id="Password" 
+                  [(ngModel)]="loanOfficer.Password" 
+                  name="Password" 
+                  required 
+                  minlength="8"
+                  pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+                  #Password="ngModel"
+              >
+          </div>
+          <div *ngIf="Password.invalid && (Password.dirty || Password.touched)" class="text-danger">
+              <div *ngIf="Password.errors?.['required']">
+                  Password is required.
+              </div>
+              <div *ngIf="Password.errors?.['minlength']">
+                  Password must be at least 8 characters long.
+              </div>
+              <div *ngIf="Password.errors?.['pattern']">
+                  Password must contain at least one letter and one number.
+              </div>
+          </div>
+      </div>
+
+      <button type="submit" class="btn btn-dark" [disabled]="loanOfficerForm.invalid">Add Loan Officer</button>
+
+      <!-- Cancel Button -->
+      <button type="button" class="btn btn-secondary ms-2" (click)="cancel()">Cancel</button>
+  </form>
+</div>

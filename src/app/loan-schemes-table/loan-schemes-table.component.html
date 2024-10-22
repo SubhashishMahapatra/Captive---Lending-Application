@@ -1,0 +1,247 @@
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <button class="btn btn-light" (click)="goBack()"><i class="bi bi-skip-backward-btn-fill"></i>Back</button>
+   
+    <a class="navbar-brand ms-3" href="#">Go Back to Admin Panel</a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarNav">
+    
+    </div>
+  </div>
+</nav>
+<div class="container my-5">
+
+<div class="row mt-5">
+  <div class="col-md-6">
+    <h4>Retail Loan Schemes</h4>
+
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by name or description"
+        [(ngModel)]="searchTermRetail"
+        (input)="filterRetailLoans()"
+      />
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Loan Name</th>
+            <th>Description</th>
+            <th>Rate of Interest</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let loan of getPaginatedRetailLoans()">
+            <td>{{ loan.lsName }}</td>
+            <td>{{ loan.lsDescription }}</td>
+            <td>{{ loan.rateOfInterest }}%</td>
+            <td>
+              <a routerLink="/edit-loan-scheme/{{ loan.loanSchemesId }}" class="btn btn-warning btn-sm">Edit</a>
+              <button class="btn btn-danger btn-sm" (click)="deleteLoanScheme(loan.loanSchemesId)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="currentPageRetail === 1">
+        <a class="page-link" (click)="prevPageRetail()">Previous</a>
+      </li>
+      <li class="page-item" *ngFor="let page of [].constructor(totalPagesRetail); let i = index">
+        <a class="page-link" [class.active]="currentPageRetail === i + 1" (click)="goToPageRetail(i + 1)">{{ i + 1 }}</a>
+      </li>
+      <li class="page-item" [class.disabled]="currentPageRetail === totalPagesRetail">
+        <a class="page-link" (click)="nextPageRetail()">Next</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-md-6">
+    <h4>Corporate Loan Schemes</h4>
+
+   
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by name or description"
+        [(ngModel)]="searchTermCorporate"
+        (input)="filterCorporateLoans()"
+      />
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Loan Name</th>
+            <th>Description</th>
+            <th>Rate of Interest</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let loan of getPaginatedCorporateLoans()">
+            <td>{{ loan.lsName }}</td>
+            <td>{{ loan.lsDescription }}</td>
+            <td>{{ loan.rateOfInterest }}%</td>
+            <td>
+              <a routerLink="/edit-loan-scheme/{{ loan.loanSchemesId }}" class="btn btn-warning btn-sm">Edit</a>
+              <button class="btn btn-danger btn-sm" (click)="deleteCorporateLoanScheme(loan.loanSchemesId)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+   
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="currentPageCorporate === 1">
+        <a class="page-link" (click)="prevPageCorporate()">Previous</a>
+      </li>
+      <li class="page-item" *ngFor="let page of [].constructor(totalPagesCorporate); let i = index">
+        <a class="page-link" [class.active]="currentPageCorporate === i + 1" (click)="goToPageCorporate(i + 1)">{{ i + 1 }}</a>
+      </li>
+      <li class="page-item" [class.disabled]="currentPageCorporate === totalPagesCorporate">
+        <a class="page-link" (click)="nextPageCorporate()">Next</a>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+ -->
+
+
+
+
+
+
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <button class="btn btn-light" (click)="goBack()"><i class="bi bi-skip-backward-btn-fill"></i>Back</button>
+    <a class="navbar-brand ms-3" href="#">Go Back to Admin Panel</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+    </div>
+  </div>
+</nav>
+<div class="container my-5">
+
+<div class="row mt-5">
+  <div class="col-md-6">
+    <h4>Retail Loan Schemes</h4>
+
+    <!-- Search bar for Retail Loans -->
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by name or description"
+        [(ngModel)]="searchTermRetail"
+        (input)="filterRetailLoans()"
+      />
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Loan Name</th>
+            <th>Description</th>
+            <th>Rate of Interest</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let loan of getPaginatedRetailLoans()">
+            <td>{{ loan.lsName }}</td>
+            <td>{{ loan.lsDescription }}</td>
+            <td>{{ loan.rateOfInterest }}%</td>
+            <td>
+              <a routerLink="/edit-loan-scheme/{{ loan.loanSchemesId }}" class="btn btn-warning btn-sm">Edit</a>
+              <button class="btn btn-danger btn-sm" (click)="deleteLoanScheme(loan.loanSchemesId)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="currentPageRetail === 1">
+        <a class="page-link" (click)="prevPageRetail()">Previous</a>
+      </li>
+      <li class="page-item" *ngFor="let page of [].constructor(totalPagesRetail); let i = index">
+        <a class="page-link" [class.active]="currentPageRetail === i + 1" (click)="goToPageRetail(i + 1)">{{ i + 1 }}</a>
+      </li>
+      <li class="page-item" [class.disabled]="currentPageRetail === totalPagesRetail">
+        <a class="page-link" (click)="nextPageRetail()">Next</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-md-6">
+    <h4>Corporate Loan Schemes</h4>
+
+    <!-- Search bar for Corporate Loans -->
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by name or description"
+        [(ngModel)]="searchTermCorporate"
+        (input)="filterCorporateLoans()"
+      />
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Loan Name</th>
+            <th>Description</th>
+            <th>Rate of Interest</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let loan of getPaginatedCorporateLoans()">
+            <td>{{ loan.lsName }}</td>
+            <td>{{ loan.lsDescription }}</td>
+            <td>{{ loan.rateOfInterest }}%</td>
+            <td>
+              <a routerLink="/edit-loan-scheme/{{ loan.loanSchemesId }}" class="btn btn-warning btn-sm">Edit</a>
+              <button class="btn btn-danger btn-sm" (click)="deleteCorporateLoanScheme(loan.loanSchemesId)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination for Corporate Loans -->
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="currentPageCorporate === 1">
+        <a class="page-link" (click)="prevPageCorporate()">Previous</a>
+      </li>
+      <li class="page-item" *ngFor="let page of [].constructor(totalPagesCorporate); let i = index">
+        <a class="page-link" [class.active]="currentPageCorporate === i + 1" (click)="goToPageCorporate(i + 1)">{{ i + 1 }}</a>
+      </li>
+      <li class="page-item" [class.disabled]="currentPageCorporate === totalPagesCorporate">
+        <a class="page-link" (click)="nextPageCorporate()">Next</a>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>

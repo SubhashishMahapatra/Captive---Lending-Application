@@ -1,0 +1,18 @@
+<div class="container mt-4">
+    <h2 class="text-center">Approved Applications</h2>
+    <div *ngIf="approvedApplications.length; else noApplications">
+      <div *ngFor="let app of approvedApplications" class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Application ID: {{ app.loanApplicationId }}</h5>
+          <p class="card-text">Loan Amount: {{ app.amount }}</p>
+          <button (click)="payInstallment(app.loanApplicationId)" class="btn btn-primary">Pay Installment</button>
+        </div>
+      </div>
+    </div>
+    <ng-template #noApplications>
+      <p class="text-center">No approved applications found.</p>
+    </ng-template>
+  </div>
+
+  <!-- {{approvedApplications | json}} -->
+  

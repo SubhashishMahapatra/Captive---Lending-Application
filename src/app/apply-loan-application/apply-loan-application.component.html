@@ -1,0 +1,107 @@
+
+  <!-- //new -->
+
+  <div class="container mt-4">
+      <h2>Apply for Loan</h2>
+   
+  
+      <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+   
+   
+      <div *ngIf="successMessage" class="alert alert-success">
+        {{ successMessage }}
+      </div>
+   
+      <form (ngSubmit)="submitApplication()" #loanForm="ngForm">
+      
+        <div class="mb-3">
+          <label for="amount" class="form-label">Loan Amount</label>
+          <input
+            type="number"
+            class="form-control"
+            id="amount"
+            [(ngModel)]="loanApplication.amount"
+            name="amount"
+            required
+            #amountInput="ngModel"
+            min="1000"
+          />
+          <div *ngIf="amountInput.invalid && (amountInput.dirty || amountInput.touched)" class="text-danger">
+            <small *ngIf="amountInput.errors?.['required']">Loan amount is required.</small>
+            <small *ngIf="amountInput.errors?.['min']">Loan amount must be at least 1000.</small>
+          </div>
+        </div>
+   
+     
+        <div class="mb-3">
+          <label for="accountNumber" class="form-label">Account Number</label>
+          <input
+            type="text"
+            class="form-control"
+            id="accountNumber"
+            [(ngModel)]="loanApplication.accountNumber"
+            name="accountNumber"
+            required
+            #accountInput="ngModel"
+            pattern="[0-9]{10}"
+          />
+          <div *ngIf="accountInput.invalid && (accountInput.dirty || accountInput.touched)" class="text-danger">
+            <small *ngIf="accountInput.errors?.['required']">Account number is required.</small>
+            <small *ngIf="accountInput.errors?.['pattern']">Account number must be 10 digits.</small>
+          </div>
+        </div>
+   
+
+<div class="mb-3">
+      <label for="personalDocs" class="form-label">Upload Personal Documents</label>
+      <input
+        type="file"
+        class="form-control"
+        id="personalDocs"
+        (change)="onPersonalDocsUpload($event)"
+        multiple
+      >
+    </div>
+   
+ 
+    <ul class="list-group">
+      <li *ngFor="let doc of loanApplication.personalDocsList; let i = index" class="list-group-item d-flex justify-content-between align-items-center">
+        {{ doc.name }}
+        <button type="button" class="btn btn-danger btn-sm" (click)="removePersonalDoc(i)">Delete</button>
+      </li>
+    </ul>
+   
+
+    <div *ngIf="loanApplication.personalDocsList.length === 0" class="text-danger">
+      <small>Personal documents are required.</small>
+    </div>
+   
+   
+     
+        <div class="mb-3">
+          <label for="collateralDocs" class="form-label">Upload Collateral Documents</label>
+          <input
+            type="file"
+            class="form-control"
+            id="collateralDocs"
+            (change)="onCollateralDocsUpload($event)"
+            required
+          />
+        </div>
+   
+        <button type="submit" class="btn btn-primary" [disabled]="loanForm.invalid">
+          <i class="fas fa-paper-plane"></i> Submit Application
+        </button>
+   
+        <button type="button" class="btn btn-secondary ms-2" routerLink="/user">
+          <i class="fas fa-times"></i> Cancel
+        </button>
+      </form>
+    </div>
+   
+
+
+
+    <!-- new -->

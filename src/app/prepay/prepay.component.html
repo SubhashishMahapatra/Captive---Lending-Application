@@ -1,0 +1,38 @@
+<div class="container mt-4">
+  <h2 class="mb-4">PrePay for Application ID: {{ applicationId }}</h2>
+  
+  <!-- Pre-Payment Amount Input -->
+  <div class="form-group">
+    <label for="amount">PrePayment Amount:</label>
+    <input 
+      type="number" 
+      [(ngModel)]="prePaymentAmount" 
+      class="form-control" 
+      id="amount" 
+      placeholder="Enter amount" 
+      required 
+      min="1" 
+    />
+  </div>
+
+  <!-- Pay Button -->
+  <button class="btn btn-primary mt-3" (click)="initiatePrePay()" [disabled]="transactionInProgress">Pay</button>
+
+  <!-- PayPal Button Container -->
+  <div id="paypal-button-container" class="mt-3"></div>
+
+  <!-- Transaction in Progress Notification -->
+  <div *ngIf="transactionInProgress" class="alert alert-info mt-3" role="alert">
+    Transaction in progress. Please do not refresh the page.
+  </div>
+
+  <!-- Success message -->
+  <div *ngIf="successMessage" class="alert alert-success" role="alert">
+    {{ successMessage }}
+  </div>
+
+  <!-- Error message -->
+  <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+    {{ errorMessage }}
+  </div>
+</div>
